@@ -1,0 +1,145 @@
+/* ===== AI Reply Button ===== */
+.xai-reply-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 12px;
+    height: 32px;
+    border: none;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    position: relative;
+    z-index: 1;
+    margin-left: 4px;
+}
+.xai-reply-btn:hover {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+}
+.xai-reply-btn:active { transform: scale(0.97); }
+.xai-reply-btn .xai-icon { font-size: 15px; line-height: 1; }
+.xai-reply-btn.xai-loading { opacity: 0.7; pointer-events: none; }
+.xai-reply-btn.xai-loading::after {
+    content: "";
+    display: inline-block;
+    width: 14px; height: 14px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: xai-spin 0.6s linear infinite;
+    margin-left: 4px;
+}
+@keyframes xai-spin { to { transform: rotate(360deg); } }
+
+/* ===== Reply Popup ===== */
+.xai-reply-popup {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100000;
+    background: #1e1e2e;
+    border: 1px solid #444;
+    border-radius: 16px;
+    padding: 24px;
+    width: 480px;
+    max-width: 90vw;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #e1e1e1;
+}
+.xai-reply-popup h3 { margin: 0 0 8px 0; font-size: 16px; color: #a78bfa; }
+.xai-reply-popup .xai-original-text {
+    background: #2a2a3a;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 16px;
+    max-height: 80px;
+    overflow-y: auto;
+    border-left: 3px solid #6366f1;
+}
+.xai-reply-popup textarea {
+    width: 100%;
+    min-height: 100px;
+    background: #2a2a3a;
+    border: 1px solid #555;
+    border-radius: 8px;
+    padding: 12px;
+    color: #e1e1e1;
+    font-size: 14px;
+    resize: vertical;
+    outline: none;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+.xai-reply-popup textarea:focus { border-color: #6366f1; }
+.xai-reply-popup .xai-tone-selector {
+    display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap;
+}
+.xai-reply-popup .xai-tone-btn {
+    padding: 4px 12px;
+    border-radius: 9999px;
+    border: 1px solid #555;
+    background: transparent;
+    color: #ccc;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.xai-reply-popup .xai-tone-btn:hover,
+.xai-reply-popup .xai-tone-btn.active {
+    background: #6366f1; border-color: #6366f1; color: #fff;
+}
+.xai-reply-popup .xai-actions {
+    display: flex; gap: 8px; margin-top: 16px; justify-content: flex-end;
+}
+.xai-reply-popup .xai-btn {
+    padding: 8px 20px;
+    border-radius: 9999px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.xai-reply-popup .xai-btn-primary {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6); color: #fff;
+}
+.xai-reply-popup .xai-btn-primary:hover {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+}
+.xai-reply-popup .xai-btn-secondary { background: #333; color: #ccc; }
+.xai-reply-popup .xai-btn-secondary:hover { background: #444; }
+.xai-reply-popup .xai-btn-regenerate {
+    background: transparent; color: #a78bfa; border: 1px solid #6366f1;
+}
+.xai-reply-popup .xai-btn-regenerate:hover {
+    background: rgba(99, 102, 241, 0.1);
+}
+
+/* Overlay */
+.xai-overlay {
+    position: fixed; top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.5);
+    z-index: 99999;
+}
+
+/* Error */
+.xai-error {
+    background: #3b1f1f;
+    border: 1px solid #ef4444;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: #fca5a5;
+}
